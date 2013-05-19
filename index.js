@@ -19,14 +19,14 @@ http.createServer(function (request, response) {
     }
 
     if (fs.statSync(filename).isDirectory()) {
-        // читаем список файлов в директории
+        // TODO: Add favicon.ico handler.
         fs.readdir(filename, function (err, files) {
             if (!err) {
                 response.writeHead(200, {'Content-Type': 'text/html'}); // ответ 200
                 list = "<!doctype html><html><head><title>Listing of " + __dirname + "</title></head><body>";
                 files.forEach(function (file) {
                     if (__filename === path.join(__dirname, file)) {
-                        response.end();
+                        //response.end();
                         return;
                     } // не выводим свой файл
                     //if (fs.statSync(path.join(__dirname, file)).isDirectory()) return;
